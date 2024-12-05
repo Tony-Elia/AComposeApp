@@ -42,24 +42,21 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Counter() {
-    val counter by rememberSaveable{ mutableIntStateOf(0) }
+    var counter by rememberSaveable{ mutableIntStateOf(0) }
     Column(
-        modifier =Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment= Alignment.CenterHorizontally
     ){
-        Button(onClick = {}) {
+        Button(onClick = { counter++ }) {
             Text("Increase")
         }
         Text(counter.toString(),
             fontSize=64.sp)
-        Button(onClick = {}) {
+        Button(onClick = { counter-- }) {
             Text("Decrease")
         }
-
-
     }
-
 
 }
 
@@ -67,6 +64,6 @@ fun Counter() {
 @Composable
 fun GreetingPreview() {
     AComposeAppTheme {
-
+        Counter()
     }
 }
